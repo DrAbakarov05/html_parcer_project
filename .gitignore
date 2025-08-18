@@ -17,3 +17,12 @@ __pycache__/
 Thumbs.db
 
 
+# Data outputs
+data/*.xlsx
+data/*.xls
+data/*.csv
+data/*.parquet
+
+# Keep sample input
+!data/test.html
+
