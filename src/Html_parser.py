@@ -111,14 +111,14 @@ def main():
     # Это позволяет работать с файлами относительно расположения скрипта
     script_dir = os.path.dirname(os.path.abspath(__file__))
     
-    # Формируем путь к входному HTML-файлу
-    # Файл должен находиться в той же папке, что и скрипт
-    html_file = os.path.join(script_dir, 'test.html')
+    # Формируем путь к входному HTML-файлу в папке data (на уровень выше src)
+    data_dir = os.path.abspath(os.path.join(script_dir, os.pardir, 'data'))
+    html_file = os.path.join(data_dir, 'test.html')
     
     # Проверяем существование файла перед обработкой
     if not os.path.exists(html_file):
         print(f"❌ Файл {html_file} не найден!")
-        print("Создайте файл test.html с HTML-кодом, содержащим таблицы.")
+        print("Создайте файл data/test.html с HTML-кодом, содержащим таблицы.")
         return
     
     try:
@@ -146,8 +146,8 @@ def main():
         if tables:
             print(f"✅ Найдено {len(tables)} таблиц")
             
-            # Формируем путь для сохранения Excel-файла
-            output_excel_path = os.path.join(script_dir, "all_tables2.xlsx")
+            # Формируем путь для сохранения Excel-файла в папке data
+            output_excel_path = os.path.join(data_dir, "all_tables2.xlsx")
             
             # Создаем Excel-файл с несколькими листами (по одному на таблицу)
             with pd.ExcelWriter(output_excel_path, engine="openpyxl") as writer:
