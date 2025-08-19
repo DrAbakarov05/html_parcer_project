@@ -4,7 +4,9 @@
 Использование из консоли:
     python -m src.txt_to_html path/to/input.txt [-o path/to/output.html] [--title "Мой заголовок"]
 
-
+Если входной файл содержит полный HTML-документ (<html> ...), содержимое будет сохранено как есть.
+Если файл содержит фрагмент HTML (например, только <table>), он будет обёрнут в минимальный HTML-шаблон.
+"""
 
 from __future__ import annotations
 
